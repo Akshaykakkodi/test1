@@ -43,7 +43,7 @@ class Media {
     String? fileName;
     String? filePath;
     String? description;
-    List<LikedBy>? likedBy;
+    List<String>? likedBy;
     int? likeCount;
     List<String>? commentId;
     int? commentCount;
@@ -82,7 +82,7 @@ class Media {
         fileName: json["fileName"],
         filePath: json["filePath"],
         description: json["description"],
-        likedBy: json["likedBy"] == null ? [] : List<LikedBy>.from(json["likedBy"]!.map((x) => likedByValues.map[x]!)),
+        likedBy: json["likedBy"] == null ? [] : List<String>.from(json["likedBy"]!.map((x) => x)),
         likeCount: json["likeCount"],
         commentId: json["commentId"] == null ? [] : List<String>.from(json["commentId"]!.map((x) => x)),
         commentCount: json["commentCount"],
@@ -102,7 +102,7 @@ class Media {
         "fileName": fileName,
         "filePath": filePath,
         "description": description,
-        "likedBy": likedBy == null ? [] : List<dynamic>.from(likedBy!.map((x) => likedByValues.reverse[x])),
+        "likedBy": likedBy == null ? [] : List<dynamic>.from(likedBy!.map((x) => x)),
         "likeCount": likeCount,
         "commentId": commentId == null ? [] : List<dynamic>.from(commentId!.map((x) => x)),
         "commentCount": commentCount,
@@ -138,22 +138,6 @@ enum LastName {
 
 final lastNameValues = EnumValues({
     "kumar": LastName.KUMAR
-});
-
-enum LikedBy {
-    THE_66097_ED5_BBCF5_F103_AA79_F6_F,
-    THE_66098_E40_BBCF5_F103_AA7_A1_AA,
-    THE_660_A4_D1_EF9_FC79_E38260_B412,
-    THE_6611_A02074005_A168_FC5946_F,
-    THE_66322_C61_DBDA3_ED513_A59_BFF
-}
-
-final likedByValues = EnumValues({
-    "66097ed5bbcf5f103aa79f6f": LikedBy.THE_66097_ED5_BBCF5_F103_AA79_F6_F,
-    "66098e40bbcf5f103aa7a1aa": LikedBy.THE_66098_E40_BBCF5_F103_AA7_A1_AA,
-    "660a4d1ef9fc79e38260b412": LikedBy.THE_660_A4_D1_EF9_FC79_E38260_B412,
-    "6611a02074005a168fc5946f": LikedBy.THE_6611_A02074005_A168_FC5946_F,
-    "66322c61dbda3ed513a59bff": LikedBy.THE_66322_C61_DBDA3_ED513_A59_BFF
 });
 
 enum UserId {

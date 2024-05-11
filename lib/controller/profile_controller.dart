@@ -8,6 +8,8 @@ class ProfileController extends ChangeNotifier {
   ProfileRepository profileRepository = ProfileRepository();
   Future<ResponseModel> loadProfileData() async {
     try {
+     
+     
       return await profileRepository.loadProfileData();
     } catch (e) {
        log(e.toString());

@@ -28,13 +28,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: const Color(0xffFFFFFF),
       bottomNavigationBar: Container(
-        color: Colors.amber,
-        child: Image.asset(
-        "assets/images/bottomnav.png",fit: BoxFit.fill,
-      
+        child: Stack(children: [
+          Image.asset(
+            "assets/images/rect.png",
+            fit: BoxFit.fill,
+          ),
+          Image.asset("assets/images/bottombar.png")
+        ]),
       ),
-      ),
-
       body: RefreshIndicator(
         onRefresh: () {
           setState(() {});
@@ -115,8 +116,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: AppConstants.textMedium.copyWith(fontSize: 10),
                   ),
                   Text(
-                    "This is description \ntis is description",
-                    style: AppConstants.textMedium.copyWith(fontSize: 12,fontWeight: FontWeight.w300),
+                    "🌟 You are beautiful and\nI am here to capture it 🌟",
+                    style: AppConstants.textMedium
+                        .copyWith(fontSize: 12, fontWeight: FontWeight.w300),
                   ),
                   const Gap(6),
                   Row(
@@ -141,14 +143,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       )
                     ],
                   ),
-                  const Gap(24),
-                  Container(
-                    height: 30,
-                  ),
-                  const Gap(10),
+                  // const Gap(24),
+                  // Container(
+                  //   height: 30,
+                  // ),
+                  // const Gap(10),
                 ],
               ),
             ),
+            const Gap(20),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 3),
+              height: 24,
+
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  border: Border(
+                      top: BorderSide(
+                          width: 1, color: Color(0xffD3D5E7).withOpacity(0.4)),
+                      bottom: BorderSide(
+                          width: 1,
+                          color: Color(0xffD3D5E7).withOpacity(0.4)))),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    "Photos",
+                    style: AppConstants.textMediumGrey,
+                  ),
+                  VerticalDivider(
+                    color: Color(0xffA7ACD0).withOpacity(0.31),
+                    width: 2,
+                  ),
+                  Text(
+                    "Videos",
+                    style: AppConstants.textMediumGrey,
+                  ),
+                ],
+              ),
+              // color:Color(0xffD3D5E7).withOpacity(0.4),
+            ),
+
+            //  const Gap(24),
+            //   Container(
+            //   height: 1,
+            //   width: double.infinity,
+            //   color:Color(0xffD3D5E7).withOpacity(0.4),
+            // ),
+            const Gap(31),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6.0),
               child: FutureBuilder(
@@ -182,7 +224,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               decoration: BoxDecoration(
                                   color: Colors.grey[100],
                                   image: DecorationImage(
-                                      image: NetworkImage(media[index].filePath!),
+                                      image:
+                                          NetworkImage(media[index].filePath!),
                                       fit: BoxFit.cover)),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -227,7 +270,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       )
                                     ],
                                   ),
-                                  const Gap(12)
+                                  const Gap(5)
                                 ],
                               ),
                             ),
@@ -298,7 +341,8 @@ class ButtonWidget extends StatelessWidget {
       child: Center(
           child: Text(
         title,
-        style: AppConstants.textMedium.copyWith(color: Colors.white,fontWeight: FontWeight.w500),
+        style: AppConstants.textMedium
+            .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
       )),
     );
   }
